@@ -1,0 +1,13 @@
+
+services:
+  # Serviço da API FastAPI
+  api:
+    container_name: gestao_escolar_api
+    build: . # Constrói a imagem a partir do Dockerfile no diretório atual
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app # Monta o código local no contêiner para live-reloading
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
